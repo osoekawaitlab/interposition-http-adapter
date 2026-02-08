@@ -7,9 +7,7 @@ from interposition_http_adapter._version import __version__
 
 def generate_cli_parser() -> ArgumentParser:
     """Generate the argument parser for the interposition_http_adapter CLI."""
-    parser = ArgumentParser(
-        description="HTTP adapter for Interposition."
-    )
+    parser = ArgumentParser(description="HTTP adapter for Interposition.")
     parser.add_argument("--version", action="version", version=__version__)
     return parser
 
