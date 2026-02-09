@@ -9,3 +9,7 @@ class _DataStore:
     scenario: dict[str, object]
 
 data_store: _DataStore
+
+class Messages:
+    @staticmethod
+    def write_message(message: str) -> None: ...
