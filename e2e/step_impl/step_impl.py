@@ -2,6 +2,7 @@
 
 import importlib
 import re
+import subprocess
 
 from getgauge.python import Messages, data_store, step
 
@@ -34,3 +35,31 @@ def verify_version_format(attr_name: str) -> None:
     match = re.match(SEMVER_PATTERN, version_value)
 
     assert match is not None, f"Version '{version_value}' does not follow SemVer!"
+
+
+@step("Execute the CLI command with <arguments>")
+def execute_the_cli_command_with(arguments: str) -> None:
+    """Execute the CLI command with the specified argument."""
+    args = ["interposition_http_adapter"] + [
+        d.strip() for d in arguments.split(" ") if d.strip()
+    ]
+    result = subprocess.run(  # noqa: S603
+        args,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert result.returncode == 0, f"CLI command failed with error: {result.stderr}"
+    data_store.scenario["cli_output"] = result.stdout.strip()
+
+
+@step("Verify that the output matches the __version__ from the package")
+def verify_that_the_output_matches_the_version_from_the_package() -> None:
+    """Verify that the CLI output matches the package version."""
+    imported_module = data_store.scenario["imported_module"]
+    expected_version = getattr(imported_module, "__version__", None)
+    cli_output = data_store.scenario["cli_output"]
+    assert expected_version is not None, "__version__ attribute not found in package."
+    assert expected_version == cli_output, (
+        f"Version mismatch: expected '{expected_version}', got '{cli_output}'"
+    )
