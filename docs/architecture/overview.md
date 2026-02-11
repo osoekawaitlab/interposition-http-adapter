@@ -4,4 +4,26 @@ This document provides a high-level overview of architectural decisions made for
 
 ## Architecture Decision Records
 
-To be filled as architectural decisions are made.
+### [ADR-0001: Use Starlette and uvicorn as HTTP Framework](../adr/0001-http-framework-selection.md)
+
+**Status**: Accepted | **Date**: 2026-02-10
+
+Use Starlette as the ASGI framework and uvicorn as the ASGI server for unified HTTP and WebSocket support with lightweight dependencies.
+
+---
+
+### [ADR-0002: HTTP to InteractionRequest Mapping Conventions](../adr/0002-http-interaction-mapping.md)
+
+**Status**: Accepted | **Date**: 2026-02-11
+
+Define conventions for mapping HTTP requests to InteractionRequest and ResponseChunk to HTTP responses, with status code in the first chunk's metadata.
+
+---
+
+### [ADR-0003: Replay Miss HTTP Status Policy](../adr/0003-replay-miss-http-status-policy.md)
+
+**Status**: Accepted | **Date**: 2026-02-11
+
+Define the adapter response policy for cassette replay misses as HTTP 500 to keep replay failures explicit.
+
+---
