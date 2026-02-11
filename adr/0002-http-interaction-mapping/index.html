@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://osoekawaitlab.github.io/interposition-http-adapter/adr/0000-adr-template/">
+        <link rel="canonical" href="https://osoekawaitlab.github.io/interposition-http-adapter/adr/0002-http-interaction-mapping/">
       
       
-        <link rel="prev" href="../../architecture/overview/">
+        <link rel="prev" href="../0001-http-framework-selection/">
       
       
-        <link rel="next" href="../0001-http-framework-selection/">
+        <link rel="next" href="../0003-replay-miss-http-status-policy/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>ADR 0000: This is ADR Template and Short Title of the Architectural Decision Goes Here - interposition-http-adapter</title>
+        <title>ADR 0002: HTTP to InteractionRequest Mapping Conventions - interposition-http-adapter</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#adr-0000-this-is-adr-template-and-short-title-of-the-architectural-decision-goes-here" class="md-skip">
+        <a href="#adr-0002-http-to-interactionrequest-mapping-conventions" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ADR 0000: This is ADR Template and Short Title of the Architectural Decision Goes Here
+              ADR 0002: HTTP to InteractionRequest Mapping Conventions
             
           </span>
         </div>
@@ -698,6 +698,62 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../0000-adr-template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR 0000: This is ADR Template and Short Title of the Architectural Decision Goes Here
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0001-http-framework-selection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR 0001: Use Starlette and uvicorn as HTTP Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -717,7 +773,7 @@
   <span class="md-ellipsis">
     
   
-    ADR 0000: This is ADR Template and Short Title of the Architectural Decision Goes Here
+    ADR 0002: HTTP to InteractionRequest Mapping Conventions
   
 
     
@@ -735,7 +791,7 @@
   <span class="md-ellipsis">
     
   
-    ADR 0000: This is ADR Template and Short Title of the Architectural Decision Goes Here
+    ADR 0002: HTTP to InteractionRequest Mapping Conventions
   
 
     
@@ -802,6 +858,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Decision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -828,10 +912,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#positive-implications" class="md-nav__link">
+  <a href="#positive" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Positive Implications
+        Positive
       
     </span>
   </a>
@@ -863,6 +947,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Alternatives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#full-url-as-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full URL as Target
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dedicated-response-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dedicated Response Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-code-in-every-chunk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status Code in Every Chunk
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -891,62 +1014,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../0001-http-framework-selection/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ADR 0001: Use Starlette and uvicorn as HTTP Framework
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../0002-http-interaction-mapping/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ADR 0002: HTTP to InteractionRequest Mapping Conventions
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1063,6 +1130,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Decision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1089,10 +1184,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#positive-implications" class="md-nav__link">
+  <a href="#positive" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Positive Implications
+        Positive
       
     </span>
   </a>
@@ -1123,6 +1218,45 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Alternatives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#full-url-as-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full URL as Target
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dedicated-response-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dedicated Response Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-code-in-every-chunk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status Code in Every Chunk
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1168,47 +1302,97 @@
   
 
 
-<h1 id="adr-0000-this-is-adr-template-and-short-title-of-the-architectural-decision-goes-here">ADR 0000: This is ADR Template and Short Title of the Architectural Decision Goes Here<a class="headerlink" href="#adr-0000-this-is-adr-template-and-short-title-of-the-architectural-decision-goes-here" title="Permanent link">&para;</a></h1>
+<h1 id="adr-0002-http-to-interactionrequest-mapping-conventions">ADR 0002: HTTP to InteractionRequest Mapping Conventions<a class="headerlink" href="#adr-0002-http-to-interactionrequest-mapping-conventions" title="Permanent link">&para;</a></h1>
 <h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
-<p>[Proposed | Accepted | Deprecated | Superseded]</p>
-<!-- If superseded, include a reference to the new ADR -->
-
+<p>Accepted</p>
 <h2 id="date">Date<a class="headerlink" href="#date" title="Permanent link">&para;</a></h2>
-<p>YYYY-MM-DD</p>
+<p>2026-02-11</p>
 <h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
-<p>Describe the context and problem statement. What is the architectural challenge that needs to be addressed? Include any relevant constraints or requirements that influenced the decision.</p>
-<h2 id="decision">Decision<a class="headerlink" href="#decision" title="Permanent link">&para;</a></h2>
-<p>State the architectural decision clearly and concisely. What specific approach, technology, pattern, or solution was chosen?</p>
-<h2 id="rationale">Rationale<a class="headerlink" href="#rationale" title="Permanent link">&para;</a></h2>
-<p>Explain the reasoning that led to this decision. Why was this particular option selected among the alternatives? Include relevant factors such as:</p>
+<p>The HTTP adapter translates between HTTP requests/responses and Interposition's protocol-agnostic data model (<code>InteractionRequest</code> and <code>ResponseChunk</code>). A consistent mapping convention is needed so that recorded interactions are correctly matched during replay.</p>
+<p>Interposition provides the following fields for request representation:</p>
 <ul>
-<li>Technical considerations</li>
-<li>Business requirements</li>
-<li>Team capabilities</li>
-<li>Time constraints</li>
-<li>Cost implications</li>
+<li><code>protocol</code>: Protocol identifier</li>
+<li><code>action</code>: Action or method name</li>
+<li><code>target</code>: Target resource</li>
+<li><code>headers</code>: Key-value pairs</li>
+<li><code>body</code>: Raw bytes</li>
+</ul>
+<p>For responses, <code>ResponseChunk</code> provides:</p>
+<ul>
+<li><code>data</code>: Chunk payload</li>
+<li><code>sequence</code>: Chunk ordering</li>
+<li><code>metadata</code>: Key-value pairs for protocol-specific information</li>
+</ul>
+<h2 id="decision">Decision<a class="headerlink" href="#decision" title="Permanent link">&para;</a></h2>
+<h3 id="request-mapping">Request Mapping<a class="headerlink" href="#request-mapping" title="Permanent link">&para;</a></h3>
+<p>Map HTTP requests to <code>InteractionRequest</code> as follows:</p>
+<ul>
+<li><code>protocol</code> = <code>"http"</code></li>
+<li><code>action</code> = HTTP method (e.g., <code>"GET"</code>, <code>"POST"</code>, <code>"PUT"</code>, <code>"DELETE"</code>)</li>
+<li><code>target</code> = Request path with query string when present (e.g., <code>"/api/data?kind=user"</code>)</li>
+<li><code>headers</code> = HTTP request headers as tuple of key-value pairs</li>
+<li><code>body</code> = Request body bytes</li>
+</ul>
+<p>Matching policy for which headers participate in fingerprinting is intentionally adapter-specific and may be derived from recorded interaction schemas rather than fixed global allow/deny lists.</p>
+<h3 id="response-mapping">Response Mapping<a class="headerlink" href="#response-mapping" title="Permanent link">&para;</a></h3>
+<p>Encode HTTP response information across <code>ResponseChunk</code> instances:</p>
+<ul>
+<li><strong>First chunk (sequence=0)</strong>: <code>metadata</code> contains status code as <code>("status_code", "&lt;code&gt;")</code> (e.g., <code>("status_code", "200")</code>). Response headers are reserved for future definition.</li>
+<li><strong>All chunks</strong>: <code>data</code> contains a segment of the response body.</li>
+</ul>
+<p>This mirrors HTTP's own structure where status code and headers are sent once at the beginning, followed by body data which may arrive in multiple chunks.</p>
+<h2 id="rationale">Rationale<a class="headerlink" href="#rationale" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Direct Mapping</strong>: HTTP concepts map naturally to Interposition's fields without lossy transformations</li>
+<li><strong>Replay Correctness for Query-driven APIs</strong>: Including query string in <code>target</code> avoids collisions between requests that share a path but differ by query</li>
+<li><strong>User-defined Header Participation</strong>: Reusing recorded header keys lets cassette authors control which headers influence matching, instead of imposing adapter-side allow/deny lists</li>
+<li><strong>Metadata for Response Attributes</strong>: Status code and response headers are protocol-specific and don't have dedicated fields in <code>ResponseChunk</code>, so metadata is the appropriate storage</li>
+<li><strong>First-Chunk Convention</strong>: Placing status code only in the first chunk matches HTTP semantics where status and headers precede the body</li>
 </ul>
 <h2 id="implications">Implications<a class="headerlink" href="#implications" title="Permanent link">&para;</a></h2>
-<h3 id="positive-implications">Positive Implications<a class="headerlink" href="#positive-implications" title="Permanent link">&para;</a></h3>
-<p>List the benefits and positive outcomes expected from this decision.</p>
-<h3 id="concerns">Concerns<a class="headerlink" href="#concerns" title="Permanent link">&para;</a></h3>
-<p>List potential challenges, risks, or negative consequences along with possible mitigation strategies.</p>
-<h2 id="alternatives">Alternatives<a class="headerlink" href="#alternatives" title="Permanent link">&para;</a></h2>
-<p>Describe other options that were considered and why they were not selected. For each alternative, briefly explain:</p>
+<h3 id="positive">Positive<a class="headerlink" href="#positive" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Key characteristics</li>
-<li>Pros and cons relative to the chosen solution</li>
-<li>Reasons for rejection</li>
+<li>Consistent fingerprinting enables reliable request matching across environments</li>
+<li>Clear separation between request matching fields and response metadata</li>
+<li>Query string-sensitive APIs can be replayed without extra adapter configuration</li>
+<li>Header matching policy can be chosen per adapter/use case while keeping a consistent data model</li>
+<li>Chunked responses are represented naturally</li>
+</ul>
+<h3 id="concerns">Concerns<a class="headerlink" href="#concerns" title="Permanent link">&para;</a></h3>
+<ul>
+<li>If recorded interactions include volatile headers, replay may fail unless those values are reproduced by clients (mitigation: curate recorded headers at capture time)</li>
+<li>Status code stored as string in metadata requires parsing (mitigation: simple <code>int()</code> conversion, validated at recording time)</li>
+</ul>
+<h2 id="alternatives">Alternatives<a class="headerlink" href="#alternatives" title="Permanent link">&para;</a></h2>
+<h3 id="full-url-as-target">Full URL as Target<a class="headerlink" href="#full-url-as-target" title="Permanent link">&para;</a></h3>
+<p>Using the complete URL (including scheme, host, port) as the <code>target</code> field.</p>
+<ul>
+<li><strong>Pros</strong>: Preserves full request context</li>
+<li><strong>Cons</strong>: Fingerprints would differ between environments (localhost:8080 vs production host), breaking replay portability</li>
+<li><strong>Reason for rejection</strong>: Environment-dependent fingerprints would make cassettes non-portable</li>
+</ul>
+<h3 id="dedicated-response-model">Dedicated Response Model<a class="headerlink" href="#dedicated-response-model" title="Permanent link">&para;</a></h3>
+<p>Creating a custom response model instead of using <code>ResponseChunk.metadata</code>.</p>
+<ul>
+<li><strong>Pros</strong>: Type-safe, explicit fields for status code and headers</li>
+<li><strong>Cons</strong>: Breaks compatibility with Interposition's data model, requires custom serialization</li>
+<li><strong>Reason for rejection</strong>: Working within Interposition's existing model is simpler and maintains compatibility</li>
+</ul>
+<h3 id="status-code-in-every-chunk">Status Code in Every Chunk<a class="headerlink" href="#status-code-in-every-chunk" title="Permanent link">&para;</a></h3>
+<p>Storing the status code in every <code>ResponseChunk</code>'s metadata for redundancy.</p>
+<ul>
+<li><strong>Pros</strong>: Any chunk can be interpreted independently</li>
+<li><strong>Cons</strong>: Redundant data, diverges from HTTP semantics, risk of inconsistency between chunks</li>
+<li><strong>Reason for rejection</strong>: HTTP sends status code once; the mapping should reflect this</li>
 </ul>
 <h2 id="future-direction">Future Direction<a class="headerlink" href="#future-direction" title="Permanent link">&para;</a></h2>
-<p>Outline any follow-up actions, future considerations, or potential changes that might be necessary as a result of this decision. Include potential triggers for revisiting this decision.</p>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
-<p>List any relevant documents, articles, books, or other resources that supported this decision:</p>
 <ul>
-<li>Links to relevant documentation</li>
-<li>Research materials</li>
-<li>Benchmarks or performance data</li>
-<li>Team discussions or meeting notes</li>
+<li>Define response header encoding convention when response header matching is needed</li>
+<li>Standardize optional canonicalization and filtering profiles for headers and bodies (for example, stable JSON serialization and removal of volatile fields) for common use cases</li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://osoekawaitlab.github.io/interposition/api/api_reference/">Interposition data model documentation</a></li>
 </ul>
 
 

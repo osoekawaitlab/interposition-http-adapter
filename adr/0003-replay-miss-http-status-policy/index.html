@@ -10,13 +10,11 @@
       
       
       
-        <link rel="canonical" href="https://osoekawaitlab.github.io/interposition-http-adapter/adr/0000-adr-template/">
+        <link rel="canonical" href="https://osoekawaitlab.github.io/interposition-http-adapter/adr/0003-replay-miss-http-status-policy/">
       
       
-        <link rel="prev" href="../../architecture/overview/">
+        <link rel="prev" href="../0002-http-interaction-mapping/">
       
-      
-        <link rel="next" href="../0001-http-framework-selection/">
       
       
         
@@ -27,7 +25,7 @@
     
     
       
-        <title>ADR 0000: This is ADR Template and Short Title of the Architectural Decision Goes Here - interposition-http-adapter</title>
+        <title>ADR 0003: Replay Miss HTTP Status Policy - interposition-http-adapter</title>
       
     
     
@@ -80,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#adr-0000-this-is-adr-template-and-short-title-of-the-architectural-decision-goes-here" class="md-skip">
+        <a href="#adr-0003-replay-miss-http-status-policy" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ADR 0000: This is ADR Template and Short Title of the Architectural Decision Goes Here
+              ADR 0003: Replay Miss HTTP Status Policy
             
           </span>
         </div>
@@ -698,6 +696,90 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../0000-adr-template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR 0000: This is ADR Template and Short Title of the Architectural Decision Goes Here
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0001-http-framework-selection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR 0001: Use Starlette and uvicorn as HTTP Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0002-http-interaction-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR 0002: HTTP to InteractionRequest Mapping Conventions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -717,7 +799,7 @@
   <span class="md-ellipsis">
     
   
-    ADR 0000: This is ADR Template and Short Title of the Architectural Decision Goes Here
+    ADR 0003: Replay Miss HTTP Status Policy
   
 
     
@@ -735,7 +817,7 @@
   <span class="md-ellipsis">
     
   
-    ADR 0000: This is ADR Template and Short Title of the Architectural Decision Goes Here
+    ADR 0003: Replay Miss HTTP Status Policy
   
 
     
@@ -863,6 +945,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Alternatives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#return-404-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Return 404 Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-501-not-implemented" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Return 501 Not Implemented
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurable-policy-500-404-custom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurable Policy (500 / 404 / custom)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -891,90 +1012,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../0001-http-framework-selection/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ADR 0001: Use Starlette and uvicorn as HTTP Framework
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../0002-http-interaction-mapping/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ADR 0002: HTTP to InteractionRequest Mapping Conventions
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../0003-replay-miss-http-status-policy/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ADR 0003: Replay Miss HTTP Status Policy
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1124,6 +1161,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Alternatives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#return-404-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Return 404 Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-501-not-implemented" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Return 501 Not Implemented
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurable-policy-500-404-custom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurable Policy (500 / 404 / custom)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1168,47 +1244,61 @@
   
 
 
-<h1 id="adr-0000-this-is-adr-template-and-short-title-of-the-architectural-decision-goes-here">ADR 0000: This is ADR Template and Short Title of the Architectural Decision Goes Here<a class="headerlink" href="#adr-0000-this-is-adr-template-and-short-title-of-the-architectural-decision-goes-here" title="Permanent link">&para;</a></h1>
+<h1 id="adr-0003-replay-miss-http-status-policy">ADR 0003: Replay Miss HTTP Status Policy<a class="headerlink" href="#adr-0003-replay-miss-http-status-policy" title="Permanent link">&para;</a></h1>
 <h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
-<p>[Proposed | Accepted | Deprecated | Superseded]</p>
-<!-- If superseded, include a reference to the new ADR -->
-
+<p>Accepted</p>
 <h2 id="date">Date<a class="headerlink" href="#date" title="Permanent link">&para;</a></h2>
-<p>YYYY-MM-DD</p>
+<p>2026-02-11</p>
 <h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
-<p>Describe the context and problem statement. What is the architectural challenge that needs to be addressed? Include any relevant constraints or requirements that influenced the decision.</p>
+<p>In replay mode, the HTTP adapter may receive requests that do not match any interaction in the cassette. The adapter must map this replay miss to an HTTP response status.</p>
+<p>If miss handling is ambiguous, tests can become hard to diagnose because it is unclear whether a response came from a valid recorded interaction or from fallback behavior.</p>
 <h2 id="decision">Decision<a class="headerlink" href="#decision" title="Permanent link">&para;</a></h2>
-<p>State the architectural decision clearly and concisely. What specific approach, technology, pattern, or solution was chosen?</p>
+<p>When no interaction matches during replay, the adapter returns HTTP <code>500 Internal Server Error</code>.</p>
 <h2 id="rationale">Rationale<a class="headerlink" href="#rationale" title="Permanent link">&para;</a></h2>
-<p>Explain the reasoning that led to this decision. Why was this particular option selected among the alternatives? Include relevant factors such as:</p>
 <ul>
-<li>Technical considerations</li>
-<li>Business requirements</li>
-<li>Team capabilities</li>
-<li>Time constraints</li>
-<li>Cost implications</li>
+<li><strong>Fail-fast for test environments</strong>: A replay miss usually indicates a recording gap or request-mapping mismatch, both of which should fail loudly.</li>
+<li><strong>Clearer diagnosis than <code>404</code></strong>: <code>404</code> can be confused with a legitimate recorded upstream response, while <code>500</code> signals adapter-level failure to satisfy replay.</li>
+<li><strong>Simple and deterministic behavior</strong>: A single default policy avoids hidden fallback semantics during early development.</li>
 </ul>
 <h2 id="implications">Implications<a class="headerlink" href="#implications" title="Permanent link">&para;</a></h2>
 <h3 id="positive-implications">Positive Implications<a class="headerlink" href="#positive-implications" title="Permanent link">&para;</a></h3>
-<p>List the benefits and positive outcomes expected from this decision.</p>
-<h3 id="concerns">Concerns<a class="headerlink" href="#concerns" title="Permanent link">&para;</a></h3>
-<p>List potential challenges, risks, or negative consequences along with possible mitigation strategies.</p>
-<h2 id="alternatives">Alternatives<a class="headerlink" href="#alternatives" title="Permanent link">&para;</a></h2>
-<p>Describe other options that were considered and why they were not selected. For each alternative, briefly explain:</p>
 <ul>
-<li>Key characteristics</li>
-<li>Pros and cons relative to the chosen solution</li>
-<li>Reasons for rejection</li>
+<li>Missing or stale cassettes are detected immediately.</li>
+<li>CI failures point directly to replay configuration or recording completeness issues.</li>
+<li>Consumers can distinguish replay-system failures from domain-level <code>404</code> responses.</li>
+</ul>
+<h3 id="concerns">Concerns<a class="headerlink" href="#concerns" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Some consumers may expect miss behavior to mirror upstream <code>404</code> semantics (mitigation: document replay miss semantics clearly and provide assertion helpers in test code that treat <code>500</code> as cassette coverage failure)</li>
+<li><code>500</code> may be too strict for exploratory or non-test usage (mitigation: keep current default for CI/test safety and revisit a configurable miss policy when non-test use cases become concrete)</li>
+</ul>
+<h2 id="alternatives">Alternatives<a class="headerlink" href="#alternatives" title="Permanent link">&para;</a></h2>
+<h3 id="return-404-not-found">Return <code>404 Not Found</code><a class="headerlink" href="#return-404-not-found" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Pros</strong>: Familiar REST-style response for missing resources.</li>
+<li><strong>Cons</strong>: Blurs distinction between real recorded <code>404</code> and replay miss; can hide cassette gaps.</li>
+<li><strong>Reason for rejection</strong>: Lower diagnostic value for replay correctness.</li>
+</ul>
+<h3 id="return-501-not-implemented">Return <code>501 Not Implemented</code><a class="headerlink" href="#return-501-not-implemented" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Pros</strong>: Explicitly indicates unsupported behavior.</li>
+<li><strong>Cons</strong>: Semantically intended for unimplemented server capabilities (for example, unsupported HTTP method), not missing replay data.</li>
+<li><strong>Reason for rejection</strong>: Misleading status semantics.</li>
+</ul>
+<h3 id="configurable-policy-500-404-custom">Configurable Policy (<code>500</code> / <code>404</code> / custom)<a class="headerlink" href="#configurable-policy-500-404-custom" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Pros</strong>: Flexible across environments and use cases.</li>
+<li><strong>Cons</strong>: More complexity and risk of inconsistent behavior across projects.</li>
+<li><strong>Reason for rejection</strong>: Deferred until concrete multi-mode requirements emerge.</li>
 </ul>
 <h2 id="future-direction">Future Direction<a class="headerlink" href="#future-direction" title="Permanent link">&para;</a></h2>
-<p>Outline any follow-up actions, future considerations, or potential changes that might be necessary as a result of this decision. Include potential triggers for revisiting this decision.</p>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
-<p>List any relevant documents, articles, books, or other resources that supported this decision:</p>
 <ul>
-<li>Links to relevant documentation</li>
-<li>Research materials</li>
-<li>Benchmarks or performance data</li>
-<li>Team discussions or meeting notes</li>
+<li>Revisit policy configurability if production-oriented replay workflows require softer miss handling.</li>
+<li>If configurability is introduced, define a safe default that preserves fail-fast behavior in test/CI contexts.</li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.rfc-editor.org/rfc/rfc9110">HTTP Semantics (RFC 9110)</a></li>
 </ul>
 
 

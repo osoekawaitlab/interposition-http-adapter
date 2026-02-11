@@ -10,31 +10,31 @@
       
       
       
-        <link rel="canonical" href="https://osoekawaitlab.github.io/interposition-http-adapter/adr/0000-adr-template/">
+        <link rel="canonical" href="https://osoekawaitlab.github.io/interposition-http-adapter/specifications/">
       
       
-        <link rel="prev" href="../../architecture/overview/">
+        <link rel="prev" href="../reference/">
       
       
-        <link rel="next" href="../0001-http-framework-selection/">
+        <link rel="next" href="../architecture/overview/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>ADR 0000: This is ADR Template and Short Title of the Architectural Decision Goes Here - interposition-http-adapter</title>
+        <title>E2E Specs - interposition-http-adapter</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,9 +53,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#adr-0000-this-is-adr-template-and-short-title-of-the-architectural-decision-goes-here" class="md-skip">
+        <a href="#e2e-specs" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="interposition-http-adapter" class="md-header__button md-logo" aria-label="interposition-http-adapter" data-md-component="logo">
+    <a href=".." title="interposition-http-adapter" class="md-header__button md-logo" aria-label="interposition-http-adapter" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ADR 0000: This is ADR Template and Short Title of the Architectural Decision Goes Here
+              E2E Specs
             
           </span>
         </div>
@@ -227,7 +227,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
   
@@ -248,31 +248,11 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../reference/" class="md-tabs__link">
+        <a href="../reference/" class="md-tabs__link">
           
   
   
   API Reference
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../specifications/" class="md-tabs__link">
-          
-  
-  
-  Specifications
 
         </a>
       </li>
@@ -290,7 +270,27 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../architecture/overview/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Specifications
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../architecture/overview/" class="md-tabs__link">
           
   
   
@@ -324,7 +324,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="interposition-http-adapter" class="md-nav__button md-logo" aria-label="interposition-http-adapter" data-md-component="logo">
+    <a href=".." title="interposition-http-adapter" class="md-nav__button md-logo" aria-label="interposition-http-adapter" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -354,7 +354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -435,7 +435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/" class="md-nav__link">
+      <a href="../reference/" class="md-nav__link">
         
   
   
@@ -451,6 +451,108 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Specifications
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Specifications
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E2E Specs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
     </li>
   
 
@@ -485,102 +587,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Specifications
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Specifications
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../specifications/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    E2E Specs
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-      
-        
-        
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -598,7 +608,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -616,7 +626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/overview/" class="md-nav__link">
+      <a href="../architecture/overview/" class="md-nav__link">
         
   
   
@@ -641,31 +651,28 @@
                 
   
   
-    
   
   
-  
     
     
     
     
       
       
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
         
           
-          
         
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
             
   
   
@@ -683,7 +690,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -698,37 +705,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ADR 0000: This is ADR Template and Short Title of the Architectural Decision Goes Here
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../adr/0000-adr-template/" class="md-nav__link">
         
   
   
@@ -744,153 +724,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#status" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Status
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#date" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Date
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#context" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Context
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#decision" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Decision
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rationale" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rationale
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#implications" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Implications
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Implications">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#positive-implications" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Positive Implications
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#concerns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Concerns
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#alternatives" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Alternatives
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#future-direction" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Future Direction
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -903,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0001-http-framework-selection/" class="md-nav__link">
+      <a href="../adr/0001-http-framework-selection/" class="md-nav__link">
         
   
   
@@ -931,7 +764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0002-http-interaction-mapping/" class="md-nav__link">
+      <a href="../adr/0002-http-interaction-mapping/" class="md-nav__link">
         
   
   
@@ -959,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0003-replay-miss-http-status-policy/" class="md-nav__link">
+      <a href="../adr/0003-replay-miss-http-status-policy/" class="md-nav__link">
         
   
   
@@ -1015,141 +848,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#status" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Status
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#date" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Date
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#context" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Context
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#decision" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Decision
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rationale" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rationale
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#implications" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Implications
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Implications">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#positive-implications" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Positive Implications
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#concerns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Concerns
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#alternatives" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Alternatives
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#future-direction" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Future Direction
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1168,47 +866,55 @@
   
 
 
-<h1 id="adr-0000-this-is-adr-template-and-short-title-of-the-architectural-decision-goes-here">ADR 0000: This is ADR Template and Short Title of the Architectural Decision Goes Here<a class="headerlink" href="#adr-0000-this-is-adr-template-and-short-title-of-the-architectural-decision-goes-here" title="Permanent link">&para;</a></h1>
-<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
-<p>[Proposed | Accepted | Deprecated | Superseded]</p>
-<!-- If superseded, include a reference to the new ADR -->
-
-<h2 id="date">Date<a class="headerlink" href="#date" title="Permanent link">&para;</a></h2>
-<p>YYYY-MM-DD</p>
-<h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
-<p>Describe the context and problem statement. What is the architectural challenge that needs to be addressed? Include any relevant constraints or requirements that influenced the decision.</p>
-<h2 id="decision">Decision<a class="headerlink" href="#decision" title="Permanent link">&para;</a></h2>
-<p>State the architectural decision clearly and concisely. What specific approach, technology, pattern, or solution was chosen?</p>
-<h2 id="rationale">Rationale<a class="headerlink" href="#rationale" title="Permanent link">&para;</a></h2>
-<p>Explain the reasoning that led to this decision. Why was this particular option selected among the alternatives? Include relevant factors such as:</p>
+<h1 id="e2e-specs">E2E Specs<a class="headerlink" href="#e2e-specs" title="Permanent link">&para;</a></h1>
+<p>Gauge spec files are embedded below so the executable acceptance criteria are visible in the docs.</p>
+<h1 id="http-replay-server">HTTP Replay Server<a class="headerlink" href="#http-replay-server" title="Permanent link">&para;</a></h1>
+<p>This specification verifies that the HTTP replay server returns recorded responses from a Cassette.</p>
+<h2 id="returns-recorded-response-for-a-matching-get-request">Returns recorded response for a matching GET request<a class="headerlink" href="#returns-recorded-response-for-a-matching-get-request" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Technical considerations</li>
-<li>Business requirements</li>
-<li>Team capabilities</li>
-<li>Time constraints</li>
-<li>Cost implications</li>
+<li>Create a GET cassette for "/api/data" with status "200" and body "hello"</li>
+<li>Create a replay broker with the cassette</li>
+<li>Create an HTTP adapter with the broker</li>
+<li>Start the adapter on port "19876"</li>
+<li>Send a GET request to "http://localhost:19876/api/data"</li>
+<li>Verify that the response status code is "200"</li>
+<li>Verify that the response body is "hello"</li>
 </ul>
-<h2 id="implications">Implications<a class="headerlink" href="#implications" title="Permanent link">&para;</a></h2>
-<h3 id="positive-implications">Positive Implications<a class="headerlink" href="#positive-implications" title="Permanent link">&para;</a></h3>
-<p>List the benefits and positive outcomes expected from this decision.</p>
-<h3 id="concerns">Concerns<a class="headerlink" href="#concerns" title="Permanent link">&para;</a></h3>
-<p>List potential challenges, risks, or negative consequences along with possible mitigation strategies.</p>
-<h2 id="alternatives">Alternatives<a class="headerlink" href="#alternatives" title="Permanent link">&para;</a></h2>
-<p>Describe other options that were considered and why they were not selected. For each alternative, briefly explain:</p>
+<h2 id="returns-500-for-a-request-not-in-the-cassette">Returns 500 for a request not in the Cassette<a class="headerlink" href="#returns-500-for-a-request-not-in-the-cassette" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Key characteristics</li>
-<li>Pros and cons relative to the chosen solution</li>
-<li>Reasons for rejection</li>
+<li>Create a GET cassette for "/api/data" with status "200" and body "hello"</li>
+<li>Create a replay broker with the cassette</li>
+<li>Create an HTTP adapter with the broker</li>
+<li>Start the adapter on port "19876"</li>
+<li>Send a GET request to "http://localhost:19876/api/unknown"</li>
+<li>Verify that the response status code is "500"</li>
 </ul>
-<h2 id="future-direction">Future Direction<a class="headerlink" href="#future-direction" title="Permanent link">&para;</a></h2>
-<p>Outline any follow-up actions, future considerations, or potential changes that might be necessary as a result of this decision. Include potential triggers for revisiting this decision.</p>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
-<p>List any relevant documents, articles, books, or other resources that supported this decision:</p>
+<h2 id="matches-query-string-as-part-of-request-target">Matches query string as part of request target<a class="headerlink" href="#matches-query-string-as-part-of-request-target" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Links to relevant documentation</li>
-<li>Research materials</li>
-<li>Benchmarks or performance data</li>
-<li>Team discussions or meeting notes</li>
+<li>Create a GET cassette for "/api/data?kind=user" with status "200" and body "hello-query"</li>
+<li>Create a replay broker with the cassette</li>
+<li>Create an HTTP adapter with the broker</li>
+<li>Start the adapter on port "19876"</li>
+<li>Send a GET request to "http://localhost:19876/api/data?kind=user"</li>
+<li>Verify that the response status code is "200"</li>
+<li>Verify that the response body is "hello-query"</li>
+</ul>
+<hr />
+<ul>
+<li>Stop the adapter if running</li>
+</ul>
+<h1 id="interposition_http_adapter-package-metadata-verification">interposition_http_adapter Package Metadata Verification<a class="headerlink" href="#interposition_http_adapter-package-metadata-verification" title="Permanent link">&para;</a></h1>
+<p>This specification ensures that the <code>interposition_http_adapter</code> package is properly configured and follows industry standards for versioning.</p>
+<h2 id="ensure-version-follows-semantic-versioning">Ensure version follows Semantic Versioning<a class="headerlink" href="#ensure-version-follows-semantic-versioning" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Import the "interposition_http_adapter" package</li>
+<li>Verify that "<strong>version</strong>" follows the Semantic Versioning format</li>
+</ul>
+<h2 id="verify-cli-version-command">Verify CLI version command<a class="headerlink" href="#verify-cli-version-command" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Execute the CLI command with "--version"</li>
+<li>Import the "interposition_http_adapter" package</li>
+<li>Verify that the output matches the <strong>version</strong> from the package</li>
 </ul>
 
 
@@ -1265,10 +971,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
