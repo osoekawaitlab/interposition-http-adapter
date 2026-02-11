@@ -64,19 +64,7 @@ Requests that do not match any recorded interaction return a `500 Internal Serve
 
 ## API Reference
 
-### `InterpositionHttpAdapter`
-
-```python
-InterpositionHttpAdapter(broker: Broker)
-```
-
-An ASGI application that replays HTTP interactions via an Interposition `Broker`.
-
-**Parameters:**
-
-- `broker` (`interposition.Broker`): A Broker instance configured in replay mode with a Cassette containing the interactions to serve.
-
-The adapter is a subclass of `starlette.applications.Starlette` and can be used with any ASGI server (e.g., uvicorn).
+Detailed documentation is available in MkDocs: <https://osoekawaitlab.github.io/interposition-http-adapter/>.
 
 ## CLI
 
