@@ -1,5 +1,7 @@
 nav:
   - Home: index.md
+  - Testing:
+    - E2E Specs: testing/e2e-specs.md
   - Architecture:
     - Overview: architecture/overview.md
     - Records: adr/
