@@ -101,7 +101,7 @@ Storing the status code in every `ResponseChunk`'s metadata for redundancy.
 ## Future Direction
 
 - Define response header encoding convention when response header matching is needed
-- Standardize optional header canonicalization and filtering profiles for common use cases
+- Standardize optional canonicalization and filtering profiles for headers and bodies (for example, stable JSON serialization and removal of volatile fields) for common use cases
 
 ## References
 
