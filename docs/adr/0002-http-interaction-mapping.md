@@ -6,7 +6,7 @@ Accepted
 
 ## Date
 
-2026-02-10
+2026-02-11
 
 ## Context
 
@@ -33,10 +33,12 @@ For responses, `ResponseChunk` provides:
 Map HTTP requests to `InteractionRequest` as follows:
 
 - `protocol` = `"http"`
-- `action` = HTTP method (e.g., `"GET"`, `"POST"`)
-- `target` = Request path (e.g., `"/api/data"`)
+- `action` = HTTP method (e.g., `"GET"`, `"POST"`, `"PUT"`, `"DELETE"`)
+- `target` = Request path with query string when present (e.g., `"/api/data?kind=user"`)
 - `headers` = HTTP request headers as tuple of key-value pairs
 - `body` = Request body bytes
+
+Matching policy for which headers participate in fingerprinting is intentionally adapter-specific and may be derived from recorded interaction schemas rather than fixed global allow/deny lists.
 
 ### Response Mapping
 
@@ -50,7 +52,8 @@ This mirrors HTTP's own structure where status code and headers are sent once at
 ## Rationale
 
 - **Direct Mapping**: HTTP concepts map naturally to Interposition's fields without lossy transformations
-- **Fingerprint Stability**: Using path (not full URL) as target ensures consistent fingerprinting regardless of host/port configuration
+- **Replay Correctness for Query-driven APIs**: Including query string in `target` avoids collisions between requests that share a path but differ by query
+- **User-defined Header Participation**: Reusing recorded header keys lets cassette authors control which headers influence matching, instead of imposing adapter-side allow/deny lists
 - **Metadata for Response Attributes**: Status code and response headers are protocol-specific and don't have dedicated fields in `ResponseChunk`, so metadata is the appropriate storage
 - **First-Chunk Convention**: Placing status code only in the first chunk matches HTTP semantics where status and headers precede the body
 
@@ -60,12 +63,13 @@ This mirrors HTTP's own structure where status code and headers are sent once at
 
 - Consistent fingerprinting enables reliable request matching across environments
 - Clear separation between request matching fields and response metadata
-- Convention is extensible for future HTTP features (e.g., query parameters, response headers)
+- Query string-sensitive APIs can be replayed without extra adapter configuration
+- Header matching policy can be chosen per adapter/use case while keeping a consistent data model
 - Chunked responses are represented naturally
 
 ### Concerns
 
-- Using path only (without query parameters) may cause matching ambiguity for APIs that distinguish requests by query string (mitigation: can be extended in a future ADR when query parameter support is needed)
+- If recorded interactions include volatile headers, replay may fail unless those values are reproduced by clients (mitigation: curate recorded headers at capture time)
 - Status code stored as string in metadata requires parsing (mitigation: simple `int()` conversion, validated at recording time)
 
 ## Alternatives
@@ -97,8 +101,7 @@ Storing the status code in every `ResponseChunk`'s metadata for redundancy.
 ## Future Direction
 
 - Define response header encoding convention when response header matching is needed
-- Consider query parameter handling convention for APIs that rely on query strings
-- Evaluate whether request headers should participate in fingerprinting
+- Standardize optional header canonicalization and filtering profiles for common use cases
 
 ## References
 

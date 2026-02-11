@@ -75,6 +75,10 @@ def start_adapter(port: str) -> None:
         if server.started:
             break
         time.sleep(0.1)
+    if not server.started:
+        server.should_exit = True
+        thread.join(timeout=5.0)
+    assert server.started
 
 
 @step("Send a GET request to <url>")
