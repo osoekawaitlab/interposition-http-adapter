@@ -17,19 +17,27 @@ from interposition import (
 from interposition_http_adapter import InterpositionHttpAdapter
 
 
-@step("Create a GET cassette for <path> with status <status_code> and body <body>")
-def create_cassette(path: str, status_code: str, body: str) -> None:
-    """Create a cassette with a single GET interaction."""
+@step(
+    "Create a cassette for <method> method on <path> with request body <request_body> and status <status_code> and response body <response_body>"  # noqa: E501
+)
+def create_method_cassette(
+    method: str,
+    path: str,
+    request_body: str,
+    status_code: str,
+    response_body: str,
+) -> None:
+    """Create a cassette with a single interaction for the given HTTP method."""
     request = InteractionRequest(
         protocol="http",
-        action="GET",
+        action=method,
         target=path,
         headers=(),
-        body=b"",
+        body=request_body.encode(),
     )
     response_chunks = (
         ResponseChunk(
-            data=body.encode(),
+            data=response_body.encode(),
             sequence=0,
             metadata=(("status_code", status_code),),
         ),
@@ -86,6 +94,54 @@ def send_get_request(url: str) -> None:
     """Send a GET request to the specified URL."""
     with httpx.Client() as client:
         response = client.get(url)
+    data_store.scenario["response"] = response
+
+
+@step("Send a POST request to <url> with body <body>")
+def send_post_request(url: str, body: str) -> None:
+    """Send a POST request to the specified URL with the given body."""
+    with httpx.Client() as client:
+        response = client.post(url, content=body.encode())
+    data_store.scenario["response"] = response
+
+
+@step("Send a PUT request to <url> with body <body>")
+def send_put_request(url: str, body: str) -> None:
+    """Send a PUT request to the specified URL with the given body."""
+    with httpx.Client() as client:
+        response = client.put(url, content=body.encode())
+    data_store.scenario["response"] = response
+
+
+@step("Send a PATCH request to <url> with body <body>")
+def send_patch_request(url: str, body: str) -> None:
+    """Send a PATCH request to the specified URL with the given body."""
+    with httpx.Client() as client:
+        response = client.patch(url, content=body.encode())
+    data_store.scenario["response"] = response
+
+
+@step("Send a DELETE request to <url>")
+def send_delete_request(url: str) -> None:
+    """Send a DELETE request to the specified URL."""
+    with httpx.Client() as client:
+        response = client.delete(url)
+    data_store.scenario["response"] = response
+
+
+@step("Send a HEAD request to <url>")
+def send_head_request(url: str) -> None:
+    """Send a HEAD request to the specified URL."""
+    with httpx.Client() as client:
+        response = client.head(url)
+    data_store.scenario["response"] = response
+
+
+@step("Send an OPTIONS request to <url>")
+def send_options_request(url: str) -> None:
+    """Send an OPTIONS request to the specified URL."""
+    with httpx.Client() as client:
+        response = client.options(url)
     data_store.scenario["response"] = response
 
 

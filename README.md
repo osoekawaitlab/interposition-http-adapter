@@ -60,7 +60,7 @@ uvicorn.run(app, host="127.0.0.1", port=8000)
 ```
 
 Once the server is running, a `GET` request to `http://127.0.0.1:8000/api/data` returns the recorded response with status code 200 and body `{"message": "hello"}`.
-Requests that do not match any recorded interaction return a `500 Internal Server Error` response.
+The adapter supports all standard HTTP methods (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS). Requests that do not match any recorded interaction return a `500 Internal Server Error` response.
 
 ## API Reference
 
