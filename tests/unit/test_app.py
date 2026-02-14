@@ -60,25 +60,16 @@ def _create_replay_broker(spec: ReplaySpec) -> Broker:
     return Broker(cassette=cassette, mode="replay")
 
 
-async def _send_get(
+async def _send_request(
     adapter: InterpositionHttpAdapter,
-    path: str,
-    headers: dict[str, str] | None = None,
-) -> Response:
-    transport = ASGITransport(app=adapter)
-    async with AsyncClient(transport=transport, base_url="http://testserver") as client:
-        return await client.get(path, headers=headers)
-
-
-async def _send_post(
-    adapter: InterpositionHttpAdapter,
+    method: str,
     path: str,
     body: bytes = b"",
     headers: dict[str, str] | None = None,
 ) -> Response:
     transport = ASGITransport(app=adapter)
     async with AsyncClient(transport=transport, base_url="http://testserver") as client:
-        return await client.post(path, content=body, headers=headers)
+        return await client.request(method, path, content=body, headers=headers)
 
 
 @pytest.mark.anyio
@@ -95,7 +86,7 @@ async def test_get_request_returns_recorded_response() -> None:
     broker = _create_replay_broker(spec)
     adapter = InterpositionHttpAdapter(broker=broker)
 
-    response = await _send_get(adapter, "/api/data")
+    response = await _send_request(adapter, "GET", "/api/data")
 
     assert response.status_code == expected_status
     assert response.content == expected_body
@@ -113,7 +104,7 @@ async def test_get_request_not_in_cassette_returns_500() -> None:
     broker = _create_replay_broker(spec)
     adapter = InterpositionHttpAdapter(broker=broker)
 
-    response = await _send_get(adapter, "/api/unknown")
+    response = await _send_request(adapter, "GET", "/api/unknown")
 
     assert response.status_code == HTTP_INTERNAL_SERVER_ERROR
 
@@ -131,8 +122,9 @@ async def test_get_request_uses_recorded_header_fields_for_matching() -> None:
     broker = _create_replay_broker(spec)
     adapter = InterpositionHttpAdapter(broker=broker)
 
-    response = await _send_get(
+    response = await _send_request(
         adapter,
+        "GET",
         "/api/data",
         headers={"x-role": "admin", "x-ignored": "anything"},
     )
@@ -153,8 +145,8 @@ async def test_get_request_query_string_is_part_of_matching_target() -> None:
     broker = _create_replay_broker(spec)
     adapter = InterpositionHttpAdapter(broker=broker)
 
-    matched = await _send_get(adapter, "/api/data?kind=user")
-    not_matched = await _send_get(adapter, "/api/data?kind=admin")
+    matched = await _send_request(adapter, "GET", "/api/data?kind=user")
+    not_matched = await _send_request(adapter, "GET", "/api/data?kind=admin")
 
     assert matched.status_code == HTTP_OK
     assert matched.content == b"hello-query"
@@ -174,7 +166,99 @@ async def test_post_request_with_body_returns_recorded_response() -> None:
     broker = _create_replay_broker(spec)
     adapter = InterpositionHttpAdapter(broker=broker)
 
-    response = await _send_post(adapter, "/api/data", body=b"req-body")
+    response = await _send_request(adapter, "POST", "/api/data", body=b"req-body")
 
     assert response.status_code == HTTP_CREATED
     assert response.content == b"created"
+
+
+@pytest.mark.anyio
+async def test_put_request_returns_recorded_response() -> None:
+    """Adapter returns the recorded response for a matching PUT request."""
+    spec = ReplaySpec(
+        method="PUT",
+        target="/api/items/1",
+        status_code=HTTP_OK,
+        response_body=b"updated",
+        request_body=b"update-data",
+    )
+    broker = _create_replay_broker(spec)
+    adapter = InterpositionHttpAdapter(broker=broker)
+
+    response = await _send_request(adapter, "PUT", "/api/items/1", body=b"update-data")
+
+    assert response.status_code == HTTP_OK
+    assert response.content == b"updated"
+
+
+HTTP_NO_CONTENT = 204
+
+
+@pytest.mark.anyio
+async def test_delete_request_returns_recorded_response() -> None:
+    """Adapter returns the recorded response for a matching DELETE request."""
+    spec = ReplaySpec(
+        method="DELETE",
+        target="/api/items/1",
+        status_code=HTTP_NO_CONTENT,
+        response_body=b"",
+    )
+    broker = _create_replay_broker(spec)
+    adapter = InterpositionHttpAdapter(broker=broker)
+
+    response = await _send_request(adapter, "DELETE", "/api/items/1")
+
+    assert response.status_code == HTTP_NO_CONTENT
+
+
+@pytest.mark.anyio
+async def test_patch_request_returns_recorded_response() -> None:
+    """Adapter returns the recorded response for a matching PATCH request."""
+    spec = ReplaySpec(
+        method="PATCH",
+        target="/api/items/1",
+        status_code=HTTP_OK,
+        response_body=b"patched",
+        request_body=b"patch-data",
+    )
+    broker = _create_replay_broker(spec)
+    adapter = InterpositionHttpAdapter(broker=broker)
+
+    response = await _send_request(adapter, "PATCH", "/api/items/1", body=b"patch-data")
+
+    assert response.status_code == HTTP_OK
+    assert response.content == b"patched"
+
+
+@pytest.mark.anyio
+async def test_head_request_returns_recorded_response() -> None:
+    """Adapter returns the recorded status code for a matching HEAD request."""
+    spec = ReplaySpec(
+        method="HEAD",
+        target="/api/health",
+        status_code=HTTP_OK,
+        response_body=b"",
+    )
+    broker = _create_replay_broker(spec)
+    adapter = InterpositionHttpAdapter(broker=broker)
+
+    response = await _send_request(adapter, "HEAD", "/api/health")
+
+    assert response.status_code == HTTP_OK
+
+
+@pytest.mark.anyio
+async def test_options_request_returns_recorded_response() -> None:
+    """Adapter returns the recorded response for a matching OPTIONS request."""
+    spec = ReplaySpec(
+        method="OPTIONS",
+        target="/api/data",
+        status_code=HTTP_NO_CONTENT,
+        response_body=b"",
+    )
+    broker = _create_replay_broker(spec)
+    adapter = InterpositionHttpAdapter(broker=broker)
+
+    response = await _send_request(adapter, "OPTIONS", "/api/data")
+
+    assert response.status_code == HTTP_NO_CONTENT
