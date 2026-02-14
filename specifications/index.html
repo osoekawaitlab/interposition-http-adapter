@@ -872,7 +872,7 @@
 <p>This specification verifies that the HTTP replay server returns recorded responses from a Cassette.</p>
 <h2 id="returns-recorded-response-for-a-matching-get-request">Returns recorded response for a matching GET request<a class="headerlink" href="#returns-recorded-response-for-a-matching-get-request" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Create a GET cassette for "/api/data" with status "200" and body "hello"</li>
+<li>Create a cassette for "GET" method on "/api/data" with request body "" and status "200" and response body "hello"</li>
 <li>Create a replay broker with the cassette</li>
 <li>Create an HTTP adapter with the broker</li>
 <li>Start the adapter on port "19876"</li>
@@ -882,7 +882,7 @@
 </ul>
 <h2 id="returns-500-for-a-request-not-in-the-cassette">Returns 500 for a request not in the Cassette<a class="headerlink" href="#returns-500-for-a-request-not-in-the-cassette" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Create a GET cassette for "/api/data" with status "200" and body "hello"</li>
+<li>Create a cassette for "GET" method on "/api/data" with request body "" and status "200" and response body "hello"</li>
 <li>Create a replay broker with the cassette</li>
 <li>Create an HTTP adapter with the broker</li>
 <li>Start the adapter on port "19876"</li>
@@ -891,13 +891,70 @@
 </ul>
 <h2 id="matches-query-string-as-part-of-request-target">Matches query string as part of request target<a class="headerlink" href="#matches-query-string-as-part-of-request-target" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Create a GET cassette for "/api/data?kind=user" with status "200" and body "hello-query"</li>
+<li>Create a cassette for "GET" method on "/api/data?kind=user" with request body "" and status "200" and response body "hello-query"</li>
 <li>Create a replay broker with the cassette</li>
 <li>Create an HTTP adapter with the broker</li>
 <li>Start the adapter on port "19876"</li>
 <li>Send a GET request to "http://localhost:19876/api/data?kind=user"</li>
 <li>Verify that the response status code is "200"</li>
 <li>Verify that the response body is "hello-query"</li>
+</ul>
+<h2 id="returns-recorded-response-for-a-matching-post-request-with-body">Returns recorded response for a matching POST request with body<a class="headerlink" href="#returns-recorded-response-for-a-matching-post-request-with-body" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Create a cassette for "POST" method on "/api/data" with request body "req-body" and status "201" and response body "created"</li>
+<li>Create a replay broker with the cassette</li>
+<li>Create an HTTP adapter with the broker</li>
+<li>Start the adapter on port "19876"</li>
+<li>Send a POST request to "http://localhost:19876/api/data" with body "req-body"</li>
+<li>Verify that the response status code is "201"</li>
+<li>Verify that the response body is "created"</li>
+</ul>
+<h2 id="returns-recorded-response-for-a-matching-put-request">Returns recorded response for a matching PUT request<a class="headerlink" href="#returns-recorded-response-for-a-matching-put-request" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Create a cassette for "PUT" method on "/api/items/1" with request body "update-data" and status "200" and response body "updated"</li>
+<li>Create a replay broker with the cassette</li>
+<li>Create an HTTP adapter with the broker</li>
+<li>Start the adapter on port "19876"</li>
+<li>Send a PUT request to "http://localhost:19876/api/items/1" with body "update-data"</li>
+<li>Verify that the response status code is "200"</li>
+<li>Verify that the response body is "updated"</li>
+</ul>
+<h2 id="returns-recorded-response-for-a-matching-patch-request">Returns recorded response for a matching PATCH request<a class="headerlink" href="#returns-recorded-response-for-a-matching-patch-request" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Create a cassette for "PATCH" method on "/api/items/1" with request body "patch-data" and status "200" and response body "patched"</li>
+<li>Create a replay broker with the cassette</li>
+<li>Create an HTTP adapter with the broker</li>
+<li>Start the adapter on port "19876"</li>
+<li>Send a PATCH request to "http://localhost:19876/api/items/1" with body "patch-data"</li>
+<li>Verify that the response status code is "200"</li>
+<li>Verify that the response body is "patched"</li>
+</ul>
+<h2 id="returns-recorded-response-for-a-matching-delete-request">Returns recorded response for a matching DELETE request<a class="headerlink" href="#returns-recorded-response-for-a-matching-delete-request" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Create a cassette for "DELETE" method on "/api/items/1" with request body "" and status "204" and response body ""</li>
+<li>Create a replay broker with the cassette</li>
+<li>Create an HTTP adapter with the broker</li>
+<li>Start the adapter on port "19876"</li>
+<li>Send a DELETE request to "http://localhost:19876/api/items/1"</li>
+<li>Verify that the response status code is "204"</li>
+</ul>
+<h2 id="returns-recorded-response-for-a-matching-head-request">Returns recorded response for a matching HEAD request<a class="headerlink" href="#returns-recorded-response-for-a-matching-head-request" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Create a cassette for "HEAD" method on "/api/health" with request body "" and status "200" and response body ""</li>
+<li>Create a replay broker with the cassette</li>
+<li>Create an HTTP adapter with the broker</li>
+<li>Start the adapter on port "19876"</li>
+<li>Send a HEAD request to "http://localhost:19876/api/health"</li>
+<li>Verify that the response status code is "200"</li>
+</ul>
+<h2 id="returns-recorded-response-for-a-matching-options-request">Returns recorded response for a matching OPTIONS request<a class="headerlink" href="#returns-recorded-response-for-a-matching-options-request" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Create a cassette for "OPTIONS" method on "/api/data" with request body "" and status "204" and response body ""</li>
+<li>Create a replay broker with the cassette</li>
+<li>Create an HTTP adapter with the broker</li>
+<li>Start the adapter on port "19876"</li>
+<li>Send an OPTIONS request to "http://localhost:19876/api/data"</li>
+<li>Verify that the response status code is "204"</li>
 </ul>
 <hr />
 <ul>

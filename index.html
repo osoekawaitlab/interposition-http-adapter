@@ -1069,7 +1069,7 @@ Serves recorded HTTP interactions from an Interposition <code>Cassette</code> as
 <a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span>
 </code></pre></div>
 <p>Once the server is running, a <code>GET</code> request to <code>http://127.0.0.1:8000/api/data</code> returns the recorded response with status code 200 and body <code>{"message": "hello"}</code>.
-Requests that do not match any recorded interaction return a <code>500 Internal Server Error</code> response.</p>
+The adapter supports all standard HTTP methods (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS). Requests that do not match any recorded interaction return a <code>500 Internal Server Error</code> response.</p>
 <h2 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">&para;</a></h2>
 <p>Detailed documentation is available in MkDocs: <a href="https://osoekawaitlab.github.io/interposition-http-adapter/">https://osoekawaitlab.github.io/interposition-http-adapter/</a>.</p>
 <h2 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h2>

@@ -2,34 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://osoekawaitlab.github.io/interposition-http-adapter/</loc>
-         <lastmod>2026-02-11</lastmod>
+         <lastmod>2026-02-14</lastmod>
     </url>
     <url>
          <loc>https://osoekawaitlab.github.io/interposition-http-adapter/adr/0000-adr-template/</loc>
-         <lastmod>2026-02-11</lastmod>
+         <lastmod>2026-02-14</lastmod>
     </url>
     <url>
          <loc>https://osoekawaitlab.github.io/interposition-http-adapter/adr/0001-http-framework-selection/</loc>
-         <lastmod>2026-02-11</lastmod>
+         <lastmod>2026-02-14</lastmod>
     </url>
     <url>
          <loc>https://osoekawaitlab.github.io/interposition-http-adapter/adr/0002-http-interaction-mapping/</loc>
-         <lastmod>2026-02-11</lastmod>
+         <lastmod>2026-02-14</lastmod>
     </url>
     <url>
          <loc>https://osoekawaitlab.github.io/interposition-http-adapter/adr/0003-replay-miss-http-status-policy/</loc>
-         <lastmod>2026-02-11</lastmod>
+         <lastmod>2026-02-14</lastmod>
     </url>
     <url>
          <loc>https://osoekawaitlab.github.io/interposition-http-adapter/architecture/overview/</loc>
-         <lastmod>2026-02-11</lastmod>
+         <lastmod>2026-02-14</lastmod>
     </url>
     <url>
          <loc>https://osoekawaitlab.github.io/interposition-http-adapter/reference/</loc>
-         <lastmod>2026-02-11</lastmod>
+         <lastmod>2026-02-14</lastmod>
     </url>
     <url>
          <loc>https://osoekawaitlab.github.io/interposition-http-adapter/specifications/</loc>
-         <lastmod>2026-02-11</lastmod>
+         <lastmod>2026-02-14</lastmod>
     </url>
 </urlset>
