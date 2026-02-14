@@ -16,19 +16,21 @@ from starlette.responses import Response
 from starlette.routing import Route
 
 
-def _create_get_handler(
+def _create_handler(
     broker: Broker,
 ) -> Callable[[Request], Awaitable[Response]]:
-    """Create a GET request handler bound to the given broker."""
+    """Create a request handler bound to the given broker."""
 
-    async def handle_get(request: Request) -> Response:
+    async def handle_request(request: Request) -> Response:
+        method = request.method
         target = request.url.path
         if request.url.query:
             target = f"{target}?{request.url.query}"
 
         body = await request.body()
-        chunks = _replay_matching_get(
+        chunks = _replay_matching(
             broker=broker,
+            method=method,
             request_headers=request.headers,
             target=target,
             body=body,
@@ -45,18 +47,20 @@ def _create_get_handler(
         response_body = b"".join(chunk.data for chunk in chunks)
         return Response(status_code=status_code, content=response_body)
 
-    return handle_get
+    return handle_request
 
 
-def _replay_matching_get(
+def _replay_matching(
     broker: Broker,
+    method: str,
     request_headers: Headers,
     target: str,
     body: bytes,
 ) -> tuple[ResponseChunk, ...] | None:
     """Try replay candidates built from stored interaction header schemas."""
-    candidates = _build_get_replay_candidates(
+    candidates = _build_replay_candidates(
         interactions=broker.cassette.interactions,
+        method=method,
         request_headers=request_headers,
         target=target,
         body=body,
@@ -69,8 +73,9 @@ def _replay_matching_get(
     return None
 
 
-def _build_get_replay_candidates(
+def _build_replay_candidates(
     interactions: tuple[Interaction, ...],
+    method: str,
     request_headers: Headers,
     target: str,
     body: bytes,
@@ -83,7 +88,7 @@ def _build_get_replay_candidates(
         recorded_request = interaction.request
         if recorded_request.protocol != "http":
             continue
-        if recorded_request.action != "GET":
+        if recorded_request.action != method:
             continue
         if recorded_request.target != target:
             continue
@@ -102,7 +107,7 @@ def _build_get_replay_candidates(
 
         candidate = InteractionRequest(
             protocol="http",
-            action="GET",
+            action=method,
             target=target,
             headers=tuple(candidate_headers),
             body=body,
@@ -117,7 +122,7 @@ def _build_get_replay_candidates(
         candidates.append(
             InteractionRequest(
                 protocol="http",
-                action="GET",
+                action=method,
                 target=target,
                 headers=(),
                 body=body,
@@ -137,7 +142,12 @@ class InterpositionHttpAdapter(Starlette):
             broker: The Interposition Broker to use for replaying interactions.
         """
         self._broker = broker
+        handler = _create_handler(broker)
         routes = [
-            Route("/{path:path}", _create_get_handler(broker), methods=["GET"]),
+            Route(
+                "/{path:path}",
+                handler,
+                methods=["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
+            ),
         ]
         super().__init__(routes=routes)
