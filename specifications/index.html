@@ -813,6 +813,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0004-factory-method-for-cassette-file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR 0004: Factory Class Methods for Adapter Creation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -868,6 +896,28 @@
 
 <h1 id="e2e-specs">E2E Specs<a class="headerlink" href="#e2e-specs" title="Permanent link">&para;</a></h1>
 <p>Gauge spec files are embedded below so the executable acceptance criteria are visible in the docs.</p>
+<h1 id="http-replay-adapter-factory-tests">HTTP replay adapter factory tests<a class="headerlink" href="#http-replay-adapter-factory-tests" title="Permanent link">&para;</a></h1>
+<p>This specification verifies that the HTTP adapter can be created from a Cassette file using the factory method.</p>
+<h2 id="creates-an-adapter-from-a-cassette-file-and-replays-a-get-request">Creates an adapter from a cassette file and replays a GET request<a class="headerlink" href="#creates-an-adapter-from-a-cassette-file-and-replays-a-get-request" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Create an adapter from cassette file "e2e/fixtures/simple_get.json"</li>
+<li>Start the adapter on port "19876"</li>
+<li>Send a GET request to "http://localhost:19876/api/data"</li>
+<li>Verify that the response status code is "200"</li>
+<li>Verify that the response body is "hello from cassette"</li>
+</ul>
+<h2 id="raises-an-error-when-the-cassette-file-does-not-exist">Raises an error when the cassette file does not exist<a class="headerlink" href="#raises-an-error-when-the-cassette-file-does-not-exist" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Verify that creating an adapter from cassette file "e2e/fixtures/nonexistent.json" raises an error</li>
+</ul>
+<h2 id="raises-an-error-when-the-cassette-file-contains-invalid-json">Raises an error when the cassette file contains invalid JSON<a class="headerlink" href="#raises-an-error-when-the-cassette-file-contains-invalid-json" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Verify that creating an adapter from cassette file "e2e/fixtures/invalid.json" raises an error</li>
+</ul>
+<hr />
+<ul>
+<li>Stop the adapter if running</li>
+</ul>
 <h1 id="http-replay-server">HTTP Replay Server<a class="headerlink" href="#http-replay-server" title="Permanent link">&para;</a></h1>
 <p>This specification verifies that the HTTP replay server returns recorded responses from a Cassette.</p>
 <h2 id="returns-recorded-response-for-a-matching-get-request">Returns recorded response for a matching GET request<a class="headerlink" href="#returns-recorded-response-for-a-matching-get-request" title="Permanent link">&para;</a></h2>
