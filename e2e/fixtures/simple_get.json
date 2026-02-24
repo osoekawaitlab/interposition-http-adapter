@@ -1,0 +1,29 @@
+{
+  "interactions": [
+    {
+      "request": {
+        "protocol": "http",
+        "action": "GET",
+        "target": "/api/data",
+        "headers": [],
+        "body": ""
+      },
+      "fingerprint": {
+        "value": "05378c1c2c5edeb95869121fb7a3162df889a0f064eeecc6de9c1505f809ada7"
+      },
+      "response_chunks": [
+        {
+          "data": "hello from cassette",
+          "sequence": 0,
+          "metadata": [
+            [
+              "status_code",
+              "200"
+            ]
+          ]
+        }
+      ],
+      "metadata": []
+    }
+  ]
+}

@@ -62,6 +62,19 @@ uvicorn.run(app, host="127.0.0.1", port=8000)
 Once the server is running, a `GET` request to `http://127.0.0.1:8000/api/data` returns the recorded response with status code 200 and body `{"message": "hello"}`.
 The adapter supports all standard HTTP methods (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS). Requests that do not match any recorded interaction return a `500 Internal Server Error` response.
 
+### Creating from a Cassette file
+
+If you have a Cassette saved as a JSON file, you can create an adapter directly:
+
+```python
+import uvicorn
+
+from interposition_http_adapter import InterpositionHttpAdapter
+
+app = InterpositionHttpAdapter.from_cassette_file("fixtures/api.json")
+uvicorn.run(app, host="127.0.0.1", port=8000)
+```
+
 ## API Reference
 
 Detailed documentation is available in MkDocs: <https://osoekawaitlab.github.io/interposition-http-adapter/>.

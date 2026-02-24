@@ -27,3 +27,11 @@ Define conventions for mapping HTTP requests to InteractionRequest and ResponseC
 Define the adapter response policy for cassette replay misses as HTTP 500 to keep replay failures explicit.
 
 ---
+
+### [ADR-0004: Factory Class Methods for Adapter Creation](../adr/0004-factory-method-for-cassette-file.md)
+
+**Status**: Accepted | **Date**: 2026-02-24
+
+Provide layered factory class methods (from_store and from_cassette_file) to simplify adapter creation from stores and file paths.
+
+---

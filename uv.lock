@@ -570,14 +570,14 @@ wheels = [
 
 [[package]]
 name = "interposition"
-version = "0.3.0"
+version = "0.5.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pydantic" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/68/8f/bab6eea9095e2fbe5a2782d505adeb9ce89edb189b85ca14b7b10cab1d49/interposition-0.3.0.tar.gz", hash = "sha256:69d6b909eedb21b31c271683d8ea7043899f031557b8a239ce0cb383c6b02937", size = 14799, upload-time = "2026-02-01T02:16:10.365Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ec/64/e90190d3f4f522a55868fb618eb94fc48e63b669ee2078ad1f93fe07f1cc/interposition-0.5.0.tar.gz", hash = "sha256:6641333fe7146abf3dca01a37b0ff70366b60b4670c5760a329d0b4cf7386ca8", size = 15735, upload-time = "2026-02-19T13:01:54.221Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/af/5b/872eb8c8c227bf941b10e9c6a2b144dad9f3e3365030eb5107c7a33a9057/interposition-0.3.0-py3-none-any.whl", hash = "sha256:5e7ca378e02458d478dab056bc99a7a8f2d6bf4fd4999ad594f0caae84299917", size = 12369, upload-time = "2026-02-01T02:16:08.953Z" },
+    { url = "https://files.pythonhosted.org/packages/0e/ec/5fa1fb5da7a10f8435f96af81efc0175d720da9ebffdab140fc8fb20520e/interposition-0.5.0-py3-none-any.whl", hash = "sha256:19d39d2267056ce2bb1035dc48aeeed770f44c1a7bd897584b1189ba6c23061b", size = 13026, upload-time = "2026-02-19T13:01:52.454Z" },
 ]
 
 [[package]]
@@ -611,7 +611,7 @@ docs = [
 
 [package.metadata]
 requires-dist = [
-    { name = "interposition", specifier = ">=0.3.0" },
+    { name = "interposition", specifier = ">=0.5.0" },
     { name = "starlette", specifier = ">=0.52.1" },
     { name = "uvicorn", specifier = ">=0.40.0" },
 ]

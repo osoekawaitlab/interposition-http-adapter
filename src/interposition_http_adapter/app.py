@@ -1,6 +1,8 @@
 """HTTP adapter application for Interposition."""
 
 from collections.abc import Awaitable, Callable
+from pathlib import Path
+from typing import TYPE_CHECKING
 
 from interposition import (
     Broker,
@@ -9,11 +11,15 @@ from interposition import (
     InteractionRequest,
     ResponseChunk,
 )
+from interposition.stores import JsonFileCassetteStore
 from starlette.applications import Starlette
 from starlette.datastructures import Headers
 from starlette.requests import Request
 from starlette.responses import Response
 from starlette.routing import Route
+
+if TYPE_CHECKING:
+    from interposition import CassetteStore
 
 
 def _create_handler(
@@ -151,3 +157,35 @@ class InterpositionHttpAdapter(Starlette):
             ),
         ]
         super().__init__(routes=routes)
+
+    @classmethod
+    def from_store(
+        cls,
+        cassette_store: "CassetteStore",
+    ) -> "InterpositionHttpAdapter":
+        """Create an adapter from a CassetteStore.
+
+        Args:
+            cassette_store: A store that provides a Cassette.
+
+        Returns:
+            A fully configured InterpositionHttpAdapter in replay mode.
+        """
+        broker = Broker.from_store(cassette_store)
+        return cls(broker=broker)
+
+    @classmethod
+    def from_cassette_file(
+        cls,
+        path: str | Path,
+    ) -> "InterpositionHttpAdapter":
+        """Create an adapter from a Cassette JSON file.
+
+        Args:
+            path: Path to a JSON file containing a Cassette.
+
+        Returns:
+            A fully configured InterpositionHttpAdapter in replay mode.
+        """
+        store = JsonFileCassetteStore(Path(path))
+        return cls.from_store(store)

@@ -1,16 +1,20 @@
 """Tests for the HTTP adapter application."""
 
 from dataclasses import dataclass
+from pathlib import Path
+from unittest.mock import MagicMock
 
 import pytest
 from httpx import ASGITransport, AsyncClient, Response
 from interposition import (
     Broker,
     Cassette,
+    CassetteStore,
     Interaction,
     InteractionRequest,
     ResponseChunk,
 )
+from interposition.stores import JsonFileCassetteStore
 
 from interposition_http_adapter import InterpositionHttpAdapter
 
@@ -262,3 +266,86 @@ async def test_options_request_returns_recorded_response() -> None:
     response = await _send_request(adapter, "OPTIONS", "/api/data")
 
     assert response.status_code == HTTP_NO_CONTENT
+
+
+@pytest.mark.anyio
+async def test_from_cassette_file_creates_working_adapter(tmp_path: Path) -> None:
+    """from_cassette_file creates an adapter that replays from a JSON file."""
+    cassette_path = tmp_path / "cassette.json"
+    spec = ReplaySpec(
+        method="GET",
+        target="/api/data",
+        status_code=HTTP_OK,
+        response_body=b"from file",
+    )
+    request = InteractionRequest(
+        protocol="http",
+        action=spec.method,
+        target=spec.target,
+        headers=spec.headers,
+        body=spec.request_body,
+    )
+    response_chunks = (
+        ResponseChunk(
+            data=spec.response_body,
+            sequence=0,
+            metadata=(("status_code", str(spec.status_code)),),
+        ),
+    )
+    interaction = Interaction(
+        request=request,
+        fingerprint=request.fingerprint(),
+        response_chunks=response_chunks,
+    )
+    cassette = Cassette(interactions=(interaction,))
+
+    store = JsonFileCassetteStore(cassette_path)
+    store.save(cassette)
+
+    adapter = InterpositionHttpAdapter.from_cassette_file(cassette_path)
+
+    response = await _send_request(adapter, "GET", "/api/data")
+
+    assert response.status_code == HTTP_OK
+    assert response.content == b"from file"
+
+
+@pytest.mark.anyio
+async def test_from_store_creates_working_adapter() -> None:
+    """from_store creates an adapter that replays from a CassetteStore."""
+    spec = ReplaySpec(
+        method="GET",
+        target="/api/data",
+        status_code=HTTP_OK,
+        response_body=b"from store",
+    )
+    request = InteractionRequest(
+        protocol="http",
+        action=spec.method,
+        target=spec.target,
+        headers=spec.headers,
+        body=spec.request_body,
+    )
+    response_chunks = (
+        ResponseChunk(
+            data=spec.response_body,
+            sequence=0,
+            metadata=(("status_code", str(spec.status_code)),),
+        ),
+    )
+    interaction = Interaction(
+        request=request,
+        fingerprint=request.fingerprint(),
+        response_chunks=response_chunks,
+    )
+    cassette = Cassette(interactions=(interaction,))
+
+    mock_store = MagicMock(spec=CassetteStore)
+    mock_store.load.return_value = cassette
+
+    adapter = InterpositionHttpAdapter.from_store(mock_store)
+
+    response = await _send_request(adapter, "GET", "/api/data")
+
+    assert response.status_code == HTTP_OK
+    assert response.content == b"from store"

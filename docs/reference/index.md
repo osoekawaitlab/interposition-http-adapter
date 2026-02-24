@@ -8,3 +8,5 @@
       show_source: true
       members:
         - __init__
+        - from_store
+        - from_cassette_file
