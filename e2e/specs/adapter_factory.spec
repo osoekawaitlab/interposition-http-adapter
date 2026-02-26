@@ -47,3 +47,4 @@ This specification verifies that the HTTP adapter can be created from a Cassette
 
 ___
 * Stop the adapter if running
+* Clean up temporary cassette file if created

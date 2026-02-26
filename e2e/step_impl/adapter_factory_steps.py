@@ -130,3 +130,11 @@ def verify_cassette_file_interaction_count(
     assert isinstance(cassette_path, Path)
     data = json.loads(cassette_path.read_text())
     assert len(data["interactions"]) == int(count)
+
+
+@step("Clean up temporary cassette file if created")
+def clean_up_temporary_cassette_file() -> None:
+    """Remove the temporary cassette directory if it was created."""
+    cassette_path = data_store.scenario.get("tmp_cassette_path")
+    if isinstance(cassette_path, Path) and cassette_path.parent.exists():
+        shutil.rmtree(cassette_path.parent)
