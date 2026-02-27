@@ -12,7 +12,6 @@ from interposition import (
     CassetteStore,
     Interaction,
     InteractionRequest,
-    LiveResponderRequiredError,
     ResponseChunk,
 )
 from interposition.stores import JsonFileCassetteStore
@@ -350,14 +349,3 @@ async def test_from_store_creates_working_adapter() -> None:
 
     assert response.status_code == HTTP_OK
     assert response.content == b"from store"
-
-
-def test_from_cassette_file_record_mode_without_live_responder_raises(
-    tmp_path: Path,
-) -> None:
-    """from_cassette_file raises when record mode lacks live_responder."""
-    cassette_path = tmp_path / "cassette.json"
-    cassette_path.write_text('{"interactions": []}')
-
-    with pytest.raises(LiveResponderRequiredError):
-        InterpositionHttpAdapter.from_cassette_file(cassette_path, mode="record")

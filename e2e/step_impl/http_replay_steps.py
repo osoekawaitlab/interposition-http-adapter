@@ -18,7 +18,7 @@ from interposition_http_adapter import InterpositionHttpAdapter
 
 
 @step(
-    "Create a cassette for <method> method on <path> with request body <request_body> and status <status_code> and response body <response_body>"
+    "Create a cassette for <method> method on <path> with request body <request_body> and status <status_code> and response body <response_body>"  # noqa: E501
 )
 def create_method_cassette(
     method: str,
