@@ -914,9 +914,37 @@
 <ul>
 <li>Verify that creating an adapter from cassette file "e2e/fixtures/invalid.json" raises an error</li>
 </ul>
+<h2 id="raises-an-error-when-record-mode-is-used-without-a-live-responder">Raises an error when record mode is used without a live responder<a class="headerlink" href="#raises-an-error-when-record-mode-is-used-without-a-live-responder" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Verify that creating an adapter from cassette file "e2e/fixtures/simple_get.json" in "record" mode without a live responder raises an error</li>
+</ul>
+<h2 id="records-a-cassette-to-the-store-after-a-request-in-record-mode">Records a cassette to the store after a request in record mode<a class="headerlink" href="#records-a-cassette-to-the-store-after-a-request-in-record-mode" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Create a temporary cassette file</li>
+<li>Create an adapter from the temporary cassette file in "record" mode with a live responder</li>
+<li>Start the adapter on port "19876"</li>
+<li>Send a GET request to "http://localhost:19876/api/data"</li>
+<li>Verify that the response status code is "200"</li>
+<li>Verify that the response body is "recorded response"</li>
+<li>Verify that the temporary cassette file contains "1" interaction</li>
+</ul>
+<h2 id="auto-mode-replays-existing-cassette-and-records-missing-interactions">Auto mode replays existing cassette and records missing interactions<a class="headerlink" href="#auto-mode-replays-existing-cassette-and-records-missing-interactions" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Create a temporary cassette file from "e2e/fixtures/simple_get.json"</li>
+<li>Create an adapter from the temporary cassette file in "auto" mode with a live responder</li>
+<li>Start the adapter on port "19876"</li>
+<li>Send a GET request to "http://localhost:19876/api/data"</li>
+<li>Verify that the response status code is "200"</li>
+<li>Verify that the response body is "hello from cassette"</li>
+<li>Send a GET request to "http://localhost:19876/api/other"</li>
+<li>Verify that the response status code is "200"</li>
+<li>Verify that the response body is "recorded response"</li>
+<li>Verify that the temporary cassette file contains "2" interactions</li>
+</ul>
 <hr />
 <ul>
 <li>Stop the adapter if running</li>
+<li>Clean up temporary cassette file if created</li>
 </ul>
 <h1 id="http-replay-server">HTTP Replay Server<a class="headerlink" href="#http-replay-server" title="Permanent link">&para;</a></h1>
 <p>This specification verifies that the HTTP replay server returns recorded responses from a Cassette.</p>
