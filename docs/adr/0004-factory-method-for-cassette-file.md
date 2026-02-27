@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted
+Accepted (Amended 2026-02-26)
 
 ## Date
 
@@ -74,3 +74,33 @@ The factory method will be extended to accept a mode parameter (replay, record, 
 
 - [interposition JsonFileCassetteStore](https://github.com/osoekawaitlab/interposition)
 - [Python Factory Method Pattern](https://docs.python.org/3/library/functions.html#classmethod)
+
+## Amendment (2026-02-26)
+
+### What Changed
+
+The original ADR described factory methods supporting only replay mode, with record and auto modes as a future extension.
+
+- **Original**: Factory methods only support replay mode
+- **Amended to**: Factory methods accept a mode parameter (replay, record, auto) and a live_responder parameter
+
+The core design of two layered factory methods (from_store and from_cassette_file) remains unchanged. Only the parameter surface has been extended.
+
+### Reason for Amendment
+
+The interposition library's Broker already supports replay, record, and auto modes. Requiring users to bypass the factory methods and manually construct a Broker to use these modes defeats the purpose of the convenience API. Exposing the mode and live_responder parameters through the factory methods completes the planned extension described in the original Future Direction section.
+
+### Impact on Original ADR
+
+**Unchanged:**
+
+- Two layered factory methods (from_store and from_cassette_file)
+- from_cassette_file delegates to from_store
+- Default mode is replay (backward compatible)
+- Error propagation from the underlying store and Broker
+
+**Changed:**
+
+- Both factory methods now accept a mode parameter (default: replay)
+- Both factory methods now accept a live_responder parameter for record and auto modes
+- Validation of mode and live_responder is delegated to the interposition library's Broker, keeping the adapter as a thin pass-through

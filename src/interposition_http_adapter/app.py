@@ -1,11 +1,12 @@
 """HTTP adapter application for Interposition."""
 
-from collections.abc import Awaitable, Callable
+from collections.abc import Awaitable, Callable, Iterable
 from pathlib import Path
 from typing import TYPE_CHECKING
 
 from interposition import (
     Broker,
+    BrokerMode,
     Interaction,
     InteractionNotFoundError,
     InteractionRequest,
@@ -20,6 +21,8 @@ from starlette.routing import Route
 
 if TYPE_CHECKING:
     from interposition import CassetteStore
+
+LiveResponder = Callable[[InteractionRequest], Iterable[ResponseChunk]]
 
 
 def _create_handler(
@@ -162,30 +165,40 @@ class InterpositionHttpAdapter(Starlette):
     def from_store(
         cls,
         cassette_store: "CassetteStore",
+        mode: BrokerMode = "replay",
+        live_responder: "LiveResponder | None" = None,
     ) -> "InterpositionHttpAdapter":
         """Create an adapter from a CassetteStore.
 
         Args:
             cassette_store: A store that provides a Cassette.
+            mode: The broker mode (replay, record, or auto).
+            live_responder: Optional callable for upstream forwarding.
 
         Returns:
-            A fully configured InterpositionHttpAdapter in replay mode.
+            A fully configured InterpositionHttpAdapter.
         """
-        broker = Broker.from_store(cassette_store)
+        broker = Broker.from_store(
+            cassette_store, mode=mode, live_responder=live_responder
+        )
         return cls(broker=broker)
 
     @classmethod
     def from_cassette_file(
         cls,
         path: str | Path,
+        mode: BrokerMode = "replay",
+        live_responder: "LiveResponder | None" = None,
     ) -> "InterpositionHttpAdapter":
         """Create an adapter from a Cassette JSON file.
 
         Args:
             path: Path to a JSON file containing a Cassette.
+            mode: The broker mode (replay, record, or auto).
+            live_responder: Optional callable for upstream forwarding.
 
         Returns:
-            A fully configured InterpositionHttpAdapter in replay mode.
+            A fully configured InterpositionHttpAdapter.
         """
         store = JsonFileCassetteStore(Path(path))
-        return cls.from_store(store)
+        return cls.from_store(store, mode=mode, live_responder=live_responder)
